@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  # только после авторизации будет доступ к статьям
   before_action :authenticate_user!
 
   def index
