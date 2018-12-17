@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   # только после авторизации будет доступ к статьям
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :only => [:new, :create]
 
   def index
     @articles = Article.all
@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
      @article = Article.new(article_params)
+     
     if @article.save
     redirect_to @article
   else
